@@ -8,7 +8,7 @@ class WebServerTests(unittest.TestCase):
     
     def test_get_logs_route(self):
         # Send a GET request to the /logs route
-        response = requests.get(f'{self.base_url}/logs')
+        response = requests.get(f'{self.base_url}/api/logs')
         
         try:
             # Assert the status code is 200 (OK)
@@ -30,7 +30,7 @@ class WebServerTests(unittest.TestCase):
         
     def test_create_transaction_route(self):
         # Send a GET request to the route that creates a new transaction
-        response = requests.get(f'{self.base_url}/create-transaction')
+        response = requests.get(f'{self.base_url}/api/transaction')
         
         try:
             # Assert the status code is 200 (OK)
@@ -41,12 +41,12 @@ class WebServerTests(unittest.TestCase):
             self.assertIsNotNone(response.json())
             
             
-            print('Test "GET /create-transaction" passed.')
+            print('Test "GET /transaction" passed.')
             print('Response:')
             print(format_json(response.text))
             
         except requests.HTTPError as e:
-            print(f'Test "GET /create-transaction" failed. Error: {e}')
+            print(f'Test "GET /transaction" failed. Error: {e}')
             print('Error response:')
             print(format_json(response.text))
 
